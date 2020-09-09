@@ -41,7 +41,7 @@ def get_planet(update, context):
     dt_now = datetime.now()
     planet = ephem.Mars(dt_now.strftime('%d/%m/%Y'))
     constellation = ephem.constellation(planet)
-    print(constellation)
+    update.message.reply_text(constellation)
 
 
 def talk_to_me(update, context):
