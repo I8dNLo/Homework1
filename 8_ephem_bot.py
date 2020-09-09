@@ -47,7 +47,27 @@ def get_planet(update, context):
     print("вызвана функция определения местоположения планеты")
     dt_now = datetime.now()
     planet = talk_planet(update, context)
-    planet_answer = ephem.planet(dt_now.strftime('%d/%m/%Y'))
+    if planet == 'Sun':
+        planet_answer = ephem.Sun(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Mercury':
+        planet_answer = ephem.Mercury(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Venus':
+        planet_answer = ephem.Venus(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Moon':
+        planet_answer = ephem.Moon(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Mars':
+        planet_answer = ephem.Mars(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Jupiter':
+        planet_answer = ephem.Jupiter(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Saturn':
+        planet_answer = ephem.Saturn(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Uranus':
+        planet_answer = ephem.Uranus(dt_now.strftime('%d/%m/%Y'))
+    elif planet == 'Neptune':
+        planet_answer = ephem.Neptune(dt_now.strftime('%d/%m/%Y'))
+    else:
+        update.message.reply_text('Введено неверное название планеты')
+    constellation = ephem.constellation(planet_answer)
     constellation = ephem.constellation(planet_answer)
     update.message.reply_text(constellation)
 
