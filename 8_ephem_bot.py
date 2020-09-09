@@ -36,11 +36,19 @@ def get_date(update, context):
     dt_now = datetime.now()
     update.message.reply_text(dt_now.strftime('%d.%m.%Y'))
 
+def talk_planet(update, context):
+    text_planet = update.message.text
+    print(text_planet)
+    split_planet = text_planet.split(' ')
+    extract_planet = split_planet[1]
+    return extract_planet
+
 def get_planet(update, context):
     print("вызвана функция определения местоположения планеты")
     dt_now = datetime.now()
-    planet = ephem.Mars(dt_now.strftime('%d/%m/%Y'))
-    constellation = ephem.constellation(planet)
+    planet = talk_planet(update, context)
+    planet_answer = ephem.planet(dt_now.strftime('%d/%m/%Y'))
+    constellation = ephem.constellation(planet_answer)
     update.message.reply_text(constellation)
 
 
@@ -57,7 +65,7 @@ def main():
     dp.add_handler(CommandHandler('planet', get_planet))
     dp.add_handler(CommandHandler('date', get_date))
 
-   # dp.add_handler(MessageHandler('date', get_date))
+    dp.add_handler(MessageHandler(Filters.text, talk_planet))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
 
     logging.info('Бот стартовал')
