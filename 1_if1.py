@@ -36,7 +36,7 @@ def main(age):
     elif 100 < age :
         return 'Добро пожаловать. Клан бессмертных приветствует тебя.'
     else:
-        return 'введён не корректный возраст'
+        return 'введён некорректный возраст'
 
 student = main(age)
 print(student)
