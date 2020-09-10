@@ -27,17 +27,15 @@ def main(school_marks):
     Эта функция вызывается автоматически при запуске скрипта в консоли
     В ней надо заменить pass на ваш код
     """
-    average_score_scool = 0 #Будущий средний балл по школе
-    index_first = 0  #Будущее общее количество оценок во всей школе
-    average_score_class = 0 #средний балл класса
+    student_sum_scores = 0 #Будущий средний балл по школе
+    student_count = 0  #Будущее общее количество оценок во всей школе
     for school_class in school_marks:  # Перебираем словари из списка
-        for score in school_class['scores']:  #Перебираем по ключам словаря оценки
-            average_score_scool += score
-            average_score_class += score
-            index_first += 1
-        print(f"Средний балл класса {school_class['school_class']}: {average_score_class / len(school_class['scores'])}")
-        average_score_class = 0
-    print(f'Средний балл по школе: {average_score_scool/ index_first}')
+        class_sum_mark = sum(score in school_class['scores']) 
+        class_size = len(score in school_class['scores']) 
+        print(f"Средний балл класса {school_class['school_class']}: {class_sum_mark / class_size}")
+        student_count += class_size
+        student_sum_scores += class_sum_mark
+    print(f'Средний балл по школе: {student_sum_scores/ student_count}')
 
 main(school_marks)
     
