@@ -47,6 +47,7 @@ def get_planet(update, context):
     print("вызвана функция определения местоположения планеты")
     dt_now = datetime.now()
     planet = talk_planet(update, context)
+    plantes = {"Mars" : ephem.Mars(), ...}
     if planet == 'Sun':
         planet_answer = ephem.Sun(dt_now.strftime('%d/%m/%Y'))
     elif planet == 'Mercury':
